@@ -21,5 +21,11 @@ jobs:
 
       - run: pnpm install
 
+      - name: create env file
+        run: |
+          touch .env
+          echo TREY_USER=${{ secrets.TREY_USER }} >> .env
+          echo TREY_PASSWORD=${{ secrets.TREY_PASSWORD }} >> .env
+
       - run: pnpm build
       - run: pnpm start

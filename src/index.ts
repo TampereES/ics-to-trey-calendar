@@ -30,6 +30,10 @@ const authenticate = async () => {
     }
   );
 
+  if (res.status !== 200) {
+    throw Error("Failed to authenticate:" + (await res.json()));
+  }
+
   const json = (await res.json()) as any;
 
   console.log("Authenticated as", json.user.username);
